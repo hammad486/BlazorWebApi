@@ -1,4 +1,4 @@
-﻿@page "/students"
+﻿@* @page "/students"
 @using BlazorWebApi.Services
 @using BlazorWebApi.Models
 @using Microsoft.AspNetCore.Components.Forms
@@ -91,3 +91,4 @@ else
         students = await StudentService.GetStudentsAsync();
     }
 }
+ *@
