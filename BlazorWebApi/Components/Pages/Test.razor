@@ -1,0 +1,39 @@
+﻿
+@page "/Test"
+@using BlazorWebApi.Models
+@using BlazorWebApi.Services
+@inject StudentServices StudentService
+
+
+<h3>Test</h3>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var weather in weathers)
+        {
+            <tr>
+                <td>@weather.temperatureF</td>
+                <td>@weather.temperatureF</td>
+                <td>@weather.summary</td>
+                <td>
+                   
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    public List<Weather> weathers = new List<Weather>();
+    protected override async Task OnInitializedAsync()
+    {
+        weathers = await StudentService.GetStudentsAsync();
+    }
+}

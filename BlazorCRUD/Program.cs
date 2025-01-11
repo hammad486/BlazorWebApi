@@ -1,4 +1,4 @@
-using BlazorCRUD.Models;
+using BlazorCRUD.Context;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
