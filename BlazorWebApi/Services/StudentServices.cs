@@ -11,9 +11,10 @@ namespace BlazorWebApi.Services
             _httpClient = httpClient;
         }
 
-        public async Task<List<Student>> GetStudentsAsync()
+        public async Task<List<Weather>> GetStudentsAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<Student>>("api/Student");
+            _httpClient.BaseAddress = new Uri("http://34.196.58.97:5000/");
+            return await _httpClient.GetFromJsonAsync<List<Weather>>("WeatherForecast");
         }
 
         public async Task<Student> GetStudentByIdAsync(int id)

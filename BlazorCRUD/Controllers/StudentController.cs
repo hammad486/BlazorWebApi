@@ -1,4 +1,5 @@
-﻿using BlazorCRUD.Models;
+﻿using BlazorCRUD.Context;
+using BlazorCRUD.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,15 +10,19 @@ namespace BlazorCRUD.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
-
+        private readonly AppDbContext _context;
+        public StudentController(AppDbContext dbContext)
+        {
+            _context = dbContext;
+        }
 
         [HttpGet]
-        //public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
-        //{
-        //   // return await _context.Students.ToListAsync();
-        //}
+        public async Task<IEnumerable<Student>> GetStudents()
+        {
+            return await _context.students.ToListAsync();
+        }
 
-        [HttpGet("{id}")]
+        //[HttpGet("{id}")]
         //      public async Task<ActionResult<Student>> GetStudent(int id)
 
         //{
@@ -25,7 +30,7 @@ namespace BlazorCRUD.Controllers
         //          //if (student == null) return NotFound();
         //          //return student;
         //      }
-        [HttpPost]
+        //[HttpPost]
         //public async Task<ActionResult<Student>> PostStudent(Student student)
         //{
         //    //_context.Students.Add(student);
@@ -33,7 +38,7 @@ namespace BlazorCRUD.Controllers
         //    //return CreatedAtAction(nameof(GetStudent), new { id = student.Id }, student);
         //}
 
-        [HttpPut("{id}")]
+        //[HttpPut("{id}")]
         //public async Task<IActionResult> PutStudent(int id, Student student)
         //{
         //    if (id != student.Id) return BadRequest();
@@ -51,6 +56,6 @@ namespace BlazorCRUD.Controllers
         //    await _context.SaveChangesAsync();
         //    return NoContent();
         //}
-    } 
+    }
 }
 
